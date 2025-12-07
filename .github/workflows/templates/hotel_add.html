@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Thêm Khách Sạn</h2>
+
+<form method="POST">
+    <label>Mã khách sạn:</label><br>
+    <input type="text" name="code"><br><br>
+
+    <label>Tên khách sạn:</label><br>
+    <input type="text" name="name"><br><br>
+
+    <label>Số phòng:</label><br>
+    <input type="number" name="rooms"><br><br>
+
+    <label>Giá mỗi phòng:</label><br>
+    <input type="number" name="price"><br><br>
+
+    <button type="submit">Thêm</button>
+</form>
+
+<br>
+<a href="{{ url_for('hotel_list') }}">⬅ Quay lại</a>
+
+{% endblock %}

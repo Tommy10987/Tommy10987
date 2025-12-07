@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Danh sách khách sạn</h2>
+
+<form method="GET">
+    <input type="text" name="keyword" placeholder="Tìm theo tên..." value="{{ keyword }}">
+    <button>Tìm kiếm</button>
+</form>
+
+<br>
+<a href="{{ url_for('hotel_add') }}">➕ Thêm khách sạn</a>
+<br><br>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Mã KS</th>
+        <th>Tên KS</th>
+        <th>Số phòng</th>
+        <th>Giá/phòng</th>
+        <th>Hành động</th>
+    </tr>
+
+    {% for h in hotels %}
+    <tr>
+        <td>{{ h.code }}</td>
+        <td>{{ h.name }}</td>
+        <td>{{ h.rooms }}</td>
+        <td>{{ h.price }}</td>
+        <td>
+            <a href="{{ url_for('hotel_edit', id=h.id) }}">✏ Sửa</a> |
+            <a href="{{ url_for('hotel_delete', id=h.id) }}" onclick="return confirm('Bạn có chắc muốn xoá?');">🗑 Xoá</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
